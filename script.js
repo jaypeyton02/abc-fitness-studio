@@ -21,7 +21,23 @@ if (clearCartBtn) {
     alert("Cart cleared.");
   });
 }
+const contactForm = document.getElementById("contactForm");
 
+if (contactForm) {
+  contactForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const customerData = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      message: document.getElementById("message").value
+    };
+
+    localStorage.setItem("customerInfo", JSON.stringify(customerData));
+    alert("Thank you for your message.");
+    contactForm.reset();
+  });
+}
 // Process Order button
 const processOrderBtn = document.getElementById("processOrderBtn");
 if (processOrderBtn) {
